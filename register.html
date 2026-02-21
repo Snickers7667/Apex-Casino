@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Regisztráció</title>
+</head>
+<body>
+<h2>Regisztráció</h2>
+
+<input type="text" id="name" placeholder="Név" required><br>
+<input type="number" id="age" placeholder="Életkor" required><br>
+<select id="gender">
+  <option value="">Válassz nemet</option>
+  <option value="Férfi">Férfi</option>
+  <option value="Nő">Nő</option>
+</select><br>
+<input type="email" id="email" placeholder="Email" required><br>
+<input type="password" id="password" placeholder="Jelszó" required><br>
+<button onclick="registerUser()">Regisztráció</button>
+<p id="message"></p>
+
+<p><a href="login.html">Már van fiókom, bejelentkezés</a></p>
+
+<script src="./register.js"></script>
+</body>
+</html>
