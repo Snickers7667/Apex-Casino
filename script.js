@@ -1,21 +1,21 @@
 const gameData = {
   "Rulett": {
-    message: "A Rulett hamarosan indul!",                                           //Ez egy mini adatbázis hogy gombtól függően milyen értéket kapjon
+    message: "A Rulett hamarosan indul! Vigyázz szerintem a fekete elveszi a pénzed",                                           //Ez egy mini adatbázis hogy gombtól függően milyen értéket kapjon
     buttonText: "Rulett Indítása",
     buttonAction: () => window.location.href = "rulett.html"
   },
   "Póker": {
-    message: "Csapj le a Póker asztalra!",
+    message: "Csapj le a Póker asztalra és nyerd el az összes pénzt!",
     buttonText: "Póker Indítása",
     buttonAction: () => window.location.href = "poker.html"
   },
   "Slot Machine": {
-    message: "Forgasd a nyerőgépet és nyerj nagyot!",
+    message: "Forgasd a nyerőgépet és nyerj nagyot és nagyobbat!",
     buttonText: "Slot Indítása",
     buttonAction: () => window.location.href = "slot.html"
   },
   "Dice Roll": {
-    message: "Gurítsd a kockát és nézd, ki nyer!",
+    message: "Gurítsd meg a kockádat és nézd meg a szerencsédet!",
     buttonText: "Kocka Gurítás",
     buttonAction: () => window.location.href = "dice.html"
   }

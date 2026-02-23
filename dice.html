@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Dice Game</title>
+</head>
+<body>
+
+<h1> Dice Game</h1>
+
+<p id="balance"></p>
+
+<label>Tippelt szám:</label>
+<select id="guess">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+</select>
+
+<br><br>
+
+<input type="number" id="bet" placeholder="Tét (€)">
+
+<br><br>
+
+<button onclick="rollDice()">Dobás</button>
+
+<h2 id="result"></h2>
+
+<button onclick="goHome()">Vissza</button>
+
+<script src="dice.js"></script>
+</body>
+</html>

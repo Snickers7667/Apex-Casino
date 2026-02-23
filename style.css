@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap');
+
 .parent {
 display: grid;
 grid-template-columns: repeat(5, 1fr);
@@ -59,3 +61,6 @@ grid-row-gap: 0px;
  border: 1px solid #000 ;
 }
 
+body{
+    font-family: 'Lexend Mega';
+}
