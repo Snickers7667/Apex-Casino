@@ -6,6 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="wrap">
+    <h1>🎰 Slot Machine</h1>
+    <p id="balance"></p>
+
+    <div class="row">
+      <input type="number" id="bet" placeholder="Tét (€)" min="1" step="1">
+      <button id="spinBtn" onclick="spin()">SPIN</button>
+      <button onclick="goHome()">Vissza</button>
+    </div>
+
+    <div class="reels">
+      <div class="reel" id="r1">❔</div>
+      <div class="reel" id="r2">❔</div>
+      <div class="reel" id="r3">❔</div>
+    </div>
+
+    <div id="msg"></div>
+
+    <details>
+      <summary>Kifizetési tábla</summary>
+      <ul>
+        <li>3 azonos: nagy nyeremény (szimbólumtól függ)</li>
+        <li>2 azonos: kis nyeremény</li>
+        <li>különböző: bukó</li>
+      </ul>
+    </details>
+  </div>
+
+  <script src="slot.js"></script>
 </body>
 </html>
