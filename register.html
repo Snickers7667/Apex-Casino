@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-<meta charset="UTF-8">
-<title>Regisztráció</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regisztráció</title>
 </head>
 <body>
-<h2>Regisztráció</h2>
 
-<input type="text" id="name" placeholder="Név" required><br>
-<input type="number" id="age" placeholder="Életkor" required><br>
-<select id="gender">
-  <option value="">Válassz nemet</option>
-  <option value="Férfi">Férfi</option>
-  <option value="Nő">Nő</option>
-</select><br>
-<input type="email" id="email" placeholder="Email" required><br>
-<input type="password" id="password" placeholder="Jelszó" required><br>
-<button onclick="registerUser()">Regisztráció</button>
-<p id="message"></p>
+  <h2>Regisztráció</h2>
 
-<p><a href="login.html">Már van fiókom, bejelentkezés</a></p>
+  <input id="name" type="text" placeholder="Név"><br><br>
+  <input id="email" type="email" placeholder="Email"><br><br>
+  <input id="password" type="password" placeholder="Jelszó"><br><br>
 
-<script src="./register.js"></script>
+  <button onclick="registerUser()">Regisztráció</button>
+  <p id="message"></p>                <!--Itt irányít majd tovább-->
+
+  <p><a href="login.html">Van már fiókod? Login</a></p>
+
+  <script src="register.js"></script>
 </body>
 </html>

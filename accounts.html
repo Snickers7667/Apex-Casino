@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Fiókok</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./account.css">
+</head>
+<body>
+
+<div class="adminWrap">
+  <h1>Admin nézet – Fiókok</h1>
+  <p class="muted">
+    Ez az oldal kilistázza az összes fiókot a <b>user.json</b> + <b>localStorage</b> alapján.
+  </p>
+
+  <div class="row">
+    <input type="text" id="search" placeholder="Keresés név/email alapján..." oninput="render()">
+    <button onclick="goHome()">Főoldal</button>
+    <button onclick="goProfile()">Profil</button>
+    <button class="danger" onclick="clearLocalData()">Local adatok törlése</button>             <!--Ofcourse adatokat törli majd-->
+  </div>
+
+  <div id="status" class="muted" style="margin-top:10px;"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Név</th>
+        <th>Email</th>
+        <th>Egyenleg (€)</th>
+        <th>Forrás</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script src="accounts.js"></script>
+</body>
+</html>

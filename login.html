@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Bejelentkezés</title>
+  <meta charset="UTF-8" />
+  <title>Bejelentkezés</title>
 </head>
 <body>
+
 <h2>Bejelentkezés</h2>
 
-<input type="email" id="email" placeholder="Email" required><br>
-<input type="password" id="password" placeholder="Jelszó" required><br>
-<button onclick="loginUser()">Bejelentkezés</button>
-<p id="message"></p>
+<input type="email" id="email" placeholder="Email"><br><br>
+<input type="password" id="password" placeholder="Jelszó"><br><br>
 
-<p><a href="register.html">Még nincs fiókom, regisztráció</a></p>
+<button onclick="loginUser()">Login</button>
 
-<script src="./login.js"></script>
+<p id="message" style="color:red;"></p>
+
+<p><a href="register.html">Nincs fiókod? Regisztráció</a></p>
+
+<script src="login.js"></script>
 </body>
 </html>
