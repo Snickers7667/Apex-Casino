@@ -12,10 +12,12 @@ grid-row-gap: 0px;
 
 
 .div1 {
+    display:flex;
     position: sticky;
     grid-area: 1 / 1 / 2 / 5; 
     padding: 0;
     margin: 0;
+    height: 100%;
 
     background-color: #121212;
 }
@@ -32,11 +34,16 @@ grid-row-gap: 0px;
     
 }
 .div3 {
-    
+    padding-right: 30px;
     grid-area: 1 / 5 / 2 / 6;
     background-color: #121212;
     padding-top: 15px;
     position: sticky;
+}
+
+.div3 p{
+    color: #fff;
+
 }
 
 .lol h2 {
@@ -135,6 +142,7 @@ grid-row-gap: 0px;
 
 
 body{
+    background-color: #151515;
     margin: 0;
     padding: 0;
     font-family: 'Lexend Mega';
@@ -144,7 +152,7 @@ body{
     color: #fff;
     text-align: left;
     padding: 10px;
-    font-size: 37px;
+    font-size: 45px;
 }
 
 .div3 button {
