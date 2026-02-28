@@ -41,7 +41,7 @@ function showProfile() {
 
   const area = document.getElementById("profileArea");
   area.innerHTML = `
-  <h2>Üdv ${user.name}!</h2>
+  <h2 class="sajt">Üdv ${user.name}!</h2>
   <p>Email: ${user.email}</p>
   <p>Egyenleg: ${user.balance} €</p>
 

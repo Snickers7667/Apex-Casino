@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 .parent {
 display: grid;
@@ -8,10 +9,84 @@ grid-column-gap: 0px;
 grid-row-gap: 0px;
 }
 
-.div1 { grid-area: 1 / 1 / 2 / 5; }
-.div2 { grid-area: 2 / 1 / 6 / 2; }
-.div3 { grid-area: 1 / 5 / 2 / 6; }
-.div4 { grid-area: 2 / 2 / 6 / 6; }
+
+
+.div1 {
+    position: sticky;
+    grid-area: 1 / 1 / 2 / 5; 
+    padding: 0;
+    margin: 0;
+
+    background-color: #121212;
+}
+.div2 {
+    
+    margin: 0;
+    grid-area: 2 / 1 / 6 / 2;
+    background-color: #121212;
+    
+    padding: 1rem;
+    height: 100%;
+    position: sticky;
+
+    
+}
+.div3 {
+    
+    grid-area: 1 / 5 / 2 / 6;
+    background-color: #121212;
+    padding-top: 15px;
+    position: sticky;
+}
+
+.lol h2 {
+    color: #fff;
+}
+
+.div4 {
+    padding: 10px;
+    grid-area: 2 / 2 / 6 / 6;
+    background-color: #151515;
+
+    height: 100%;
+ }
+
+.div2 button {
+
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border: 0;
+    color: #fff;
+    font-size: 19px;
+    padding-bottom: 0.7rem;
+    text-align: center;
+    font-family: 'Merriweather';
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    display: flex;
+    width: 100%;
+    text-align: left;
+    margin: -5px;
+}
+
+.div2 button:hover{
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    color: #FFD966;
+    background-color: #2A2823;
+    padding: 1rem;
+    padding-right: 2rem;
+    margin-left: 15px;
+
+    border-radius: 5px;
+    
+}
+
+.div2 h2{
+    color: #757575;
+    text-align: center;
+}
 
 /* Itt van kis alap popupnak work nigger */
 
@@ -57,10 +132,82 @@ grid-row-gap: 0px;
 
 /* Daniek sponzora */
 
-#danieksponzor {
- border: 1px solid #000 ;
-}
+
 
 body{
+    margin: 0;
+    padding: 0;
     font-family: 'Lexend Mega';
+}
+
+#nevecske {
+    color: #fff;
+    text-align: left;
+    padding: 10px;
+    font-size: 37px;
+}
+
+.div3 button {
+    padding: 1rem;
+    background-color: #FFD966;
+    color: #321321;
+    float: left;
+
+    border-radius: 12px;
+    border: 0;
+    margin-right: 6px;
+}
+
+.reg {
+    background: #1e1e1e;
+}
+
+.div3 .belepes {
+    margin-left: 10px;
+    border-radius: 12px;
+    border: 0;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+#sponsor {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+
+
+.carousel {
+    margin: auto;
+    position: relative;
+    width: 650px;
+    height: 150px;
+    overflow: hidden;
+    background-color: #cdcdcd;
+}
+
+.carousel-item .slide-image {
+    width: 270px;
+    height: 160px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 270px;
+    border: none;
+    top: 0;
+    left: 100%;
+}
+
+.carousel-item.active {
+    left: 0;
+    transition: all 0.3s ease-out;
+}
+
+.carousel-item div {
+    height: 100%;
 }
