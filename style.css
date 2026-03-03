@@ -1,221 +1,311 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
-.parent {
-display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(5, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-}
-
-
-
-.div1 {
-    display:flex;
-    position: sticky;
-    grid-area: 1 / 1 / 2 / 5; 
+/* LENULLÁZÁS */
+* {
+    margin: 0;
     padding: 0;
-    margin: 0;
-    height: 100%;
-
-    background-color: #121212;
-}
-.div2 {
-    
-    margin: 0;
-    grid-area: 2 / 1 / 6 / 2;
-    background-color: #121212;
-    
-    padding: 1rem;
-    height: 100%;
-    position: sticky;
-
-    
-}
-.div3 {
-    padding-right: 30px;
-    grid-area: 1 / 5 / 2 / 6;
-    background-color: #121212;
-    padding-top: 15px;
-    position: sticky;
+    box-sizing: border-box;
 }
 
-.div3 p{
-    color: #fff;
-
+/* BODY ÉS CíMEK */
+body {
+    background: #111315;
+    font-family: 'Merriweather', serif;
+    color: #f5f5f5;
 }
 
-.lol h2 {
-    color: #fff;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lexend Mega', sans-serif;
 }
 
-.div4 {
-    padding: 10px;
-    grid-area: 2 / 2 / 6 / 6;
-    background-color: #151515;
+/* FELOSZTÁS*/
+.layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    min-height: 100vh;
+}
 
-    height: 100%;
- }
-
-.div2 button {
-
-    border-radius: 5px;
-    background-color: #1e1e1e;
-    padding: 1rem;
-    border: 0;
-    color: #fff;
-    font-size: 19px;
-    padding-bottom: 0.7rem;
-    text-align: center;
-    font-family: 'Merriweather';
-    transition: ease-in-out;
-    transition-duration: 0.2s;
+/* FELSŐ DIV */
+.topbar {
+    grid-column: 1 / 3;
+    background: #181b1f;
+    border-bottom: 1px solid #2a2d31;
     display: flex;
-    width: 100%;
-    text-align: left;
-    margin: -5px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
 }
 
-.div2 button:hover{
-    transition: ease-in-out;
-    transition-duration: 0.2s;
-    color: #FFD966;
-    background-color: #2A2823;
-    padding: 1rem;
-    padding-right: 2rem;
-    margin-left: 15px;
-
-    border-radius: 5px;
-    
+.topbar .magi {
+    margin-right: 20px;
 }
 
-.div2 h2{
-    color: #757575;
+.brand h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #c6a85b;
+    letter-spacing: 1px;
+}
+
+/* REGISZTRÁCIÓ / BEJELENTKEZÉS */
+.auth {
+    display: flex;
+    align-items: center;
+}
+
+.auth button {
+    background: #c6a85b;
+    border: none;
+    padding: 8px 18px;
+    margin-right: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.auth button:hover {
+    background: #d9b96b;
+}
+
+/* OLDALSÓ DIV */
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: #16191c;
+    border-right: 1px solid #2a2d31;
+    padding: 30px 20px;
+}
+
+.sidebar h3 {
     text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    color: #888;
 }
 
-/* Itt van kis alap popupnak work nigger */
+.sidebar button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: #1f2327;
+    border: 1px solid #2e3236;
+    color: #ddd;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
 
+.sidebar button:hover {
+    background: #262b30;
+    border-color: #c6a85b;
+    margin-left: 15px;
+}
+
+/* CONTENT */
+.content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 40px;
+}
+
+/* BEMUTATO = HERO */
+.hero {
+    margin-bottom: 40px;
+    background: #1a1e22;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #2a2d31;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #c6a85b;
+}
+
+.hero p {
+    color: #bbb;
+}
+
+/* POPUP  RÉSZ*/
 .popup {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    z-index: 9999;
-}
-
-.popup-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: #111;
-    color: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 350px;
-    text-align: center;
-    transition: 0.3s ease;
-    padding: 10rem;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
 }
 
 .popup.active {
-    display: block;
-}
-
-.popup.active .popup-box {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    cursor: pointer;
-    font-size: 22px;
-}
-
-/* Daniek sponzora */
-
-
-
-body{
-    background-color: #151515;
-    margin: 0;
-    padding: 0;
-    font-family: 'Lexend Mega';
-}
-
-#nevecske {
-    color: #fff;
-    text-align: left;
-    padding: 10px;
-    font-size: 45px;
-}
-
-.div3 button {
-    padding: 1rem;
-    background-color: #FFD966;
-    color: #321321;
-    float: left;
-
-    border-radius: 12px;
-    border: 0;
-    margin-right: 6px;
-}
-
-.reg {
-    background: #1e1e1e;
-}
-
-.div3 .belepes {
-    margin-left: 10px;
-    border-radius: 12px;
-    border: 0;
-    background-color: #1e1e1e;
-    color: #fff;
-}
-
-#sponsor {
-    display: flex;
-    align-items: center;
-    margin: auto;
+    opacity: 1;
 }
 
 
-
-.carousel {
-    margin: auto;
+.popup-box {
+    background: #1c1f23;
+    padding: 35px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    border: 1px solid #2a2d31;
     position: relative;
-    width: 650px;
-    height: 150px;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+
+
+
+.popup-box.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.popup-box .close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.4rem;
+}
+
+/* ===== SLIDESHOW ===== */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-bottom: 40px;
     overflow: hidden;
-    background-color: #cdcdcd;
+    border-radius: 8px;
+    border: 1px solid #2a2d31;
 }
 
-.carousel-item .slide-image {
-    width: 270px;
-    height: 160px;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.carousel-item {
+.slideshow .slide {
     position: absolute;
     width: 100%;
-    height: 270px;
-    border: none;
-    top: 0;
-    left: 100%;
-}
-
-.carousel-item.active {
-    left: 0;
-    transition: all 0.3s ease-out;
-}
-
-.carousel-item div {
     height: 100%;
+    opacity: 0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+}
+
+.slideshow .slide.active {
+    opacity: 1;
+}
+
+/* MOBIL EDITION YIPPI */
+@media screen and (max-width: 768px) {
+    
+    .layout {
+        display: block;
+        min-height: auto;
+    }
+
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .brand h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .auth {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .auth button {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+
+    .sidebar {
+        grid-column: auto;
+        grid-row: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 10px 0;
+        border-right: none;
+        border-bottom: 1px solid #2a2d31;
+        margin-bottom: 20px;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+
+    .sidebar button {
+        flex: 0 0 auto;
+        margin: 0 10px;
+        width: auto;
+        min-width: 120px;
+        text-align: center;
+    }
+
+
+    .content {
+        padding: 20px 15px;
+    }
+
+
+    .hero {
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero h2 {
+        font-size: 1.4rem;
+    }
+
+
+    .slideshow {
+        height: 180px;
+        margin-bottom: 20px;
+    }
+
+
+    .popup-box {
+        width: 90%;
+        padding: 25px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero p {
+        font-size: 0.85rem;
+    }
+
+    .sidebar button {
+        min-width: 100px;
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
 }

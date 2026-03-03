@@ -1,8 +1,8 @@
-const gameData = {
+const gameData = {                  // a játékokhoz egy adatbázis, hogy minden gombhoz adott popup nyíljon meg
   "Rulett": {
-    message: "A Rulett hamarosan indul! Vigyázz szerintem a fekete elveszi a pénzed",                                           //Ez egy mini adatbázis hogy gombtól függően milyen értéket kapjon
+    message: "A Rulett hamarosan indul! Vigyázz szerintem a fekete elveszi a pénzed",
     buttonText: "Rulett Indítása",
-    buttonAction: () => window.location.href = "rulett.html"
+    buttonAction: () => window.location.href = "rulett.html" // Átirányítás a rulett oldalra
   },
   "Póker": {
     message: "Csapj le a Póker asztalra és nyerd el az összes pénzt!",
@@ -20,32 +20,58 @@ const gameData = {
     buttonAction: () => window.location.href = "dice.html"
   }
 };
-                                                                                                    //Html elemek megkeresése lekérése
-function openPopup(game) {
+
+function openPopup(game) {                                // Ez a func felelős a button utáni popup megjelenítéséért
   const popup = document.getElementById("popup");
+  const popupBox = popup.querySelector(".popup-box");
   const popupTitle = document.getElementById("popupTitle");
   const popupText = document.getElementById("popupText");
   const popupButton = document.getElementById("popupButton");
-                                                                                  //cím beállítása
-  popupTitle.textContent = game;
-                                                                    //ha van ilyen játék az adatbázisba irja ki az adatait a gamedatából, ha meg nincs töltse ki az alsókkal a popuppot
-  if (gameData[game]) {
-    popupText.textContent = gameData[game].message;
-    popupButton.textContent = gameData[game].buttonText;
-    popupButton.onclick = gameData[game].buttonAction;
-  } else {
+
+  
+  popupTitle.textContent = game;                              // játék neve kimutatása
+
+
+  if (gameData[game]) {                         // Ha az adott játék létezik a gameData-n belül, akkor betölti az adatait
+    const { message, buttonText, buttonAction } = gameData[game];
+    popupText.textContent = message;                          // üzenet megjelenítése
+    popupButton.textContent = buttonText;                    // gomb szöveg
+    popupButton.onclick = buttonAction;                   // gomb + adott esemény hozzárendelése
+  } else {                                                // Ha az adott játék nem létezik akkor ezt fogja felhasználni
     popupText.textContent = "Hamarosan...";
     popupButton.textContent = "OK";
-    popupButton.onclick = closePopup;
+    popupButton.onclick = closePopup;                           // Popupot bezárja
   }
 
-  popup.style.display = "block";                                    //popupnak a stílusa block legyen wow nem jöttél volna rá
+
+  popup.style.display = "flex";           // Popup megjelenítése animációval mellé
+  setTimeout(() => {
+    popup.classList.add("active");
+    popupBox.classList.add("active");
+  }, 10);
 }
 
-function closePopup() {                                                       //Itt megadjuk a popup bezárását
-  document.getElementById("popup").style.display = "none";
+function closePopup() {                         // A popupot bezáró függvény
+  const popup = document.getElementById("popup");
+  const popupBox = popup.querySelector(".popup-box");
+
+  popup.classList.remove("active");
+  popupBox.classList.remove("active");
+
+  setTimeout(() => {
+    popup.style.display = "none";
+  }, 300);
 }
 
+
+window.addEventListener("click", (e) => {                     // Bezárja a popupot, ha kívűlre kattintunk
+  const popup = document.getElementById("popup");
+  if (e.target === popup) closePopup();
+});
+
+
+
+// Bejelentkezés /  Regisztrációs rész
 function checkLogin() {
   const user = JSON.parse(localStorage.getItem("currentUser"));         //Bejelentkezett user lekérése a local storagebol
   const area = document.getElementById("authArea");                   //Ez keresi meg a gombokat
@@ -55,7 +81,7 @@ function checkLogin() {
   if (user) {                                 //Ha a user->
                                                                     //Leváltja a gombokat és kiírja a neved meg az egyenleged és ha adminnal vagy akkor admin pannelt kapsz
     area.innerHTML = `
-      <p>Üdv, ${user.name}! | Egyenleg: ${user.balance} €</p>
+      <p class="magi">Üdv, ${user.name}! | Egyenleg: ${user.balance} €</p>
 
       <button onclick="goProfile()">Profil</button>
 
@@ -74,47 +100,31 @@ function checkLogin() {
     `;
   }
 }
-                                                                                      //Ezzel jelentkezel ki ezen gondolom nincs kérdés
-function logout() {
-  localStorage.removeItem("currentUser");
-  location.reload();
+
+
+
+function logout() {                                   // Kijelentkezés funkció
+  localStorage.removeItem("currentUser");              //  Törli a jelenlegi felhasználót
+  location.reload();                                  // Újratölti az oldalt
 }
-                                                                                //Ezzel meg perszhe mész a profilodra
-function goProfile() {      
+
+function goProfile() {                                 //Ezzel meg perszhe mész a profilodra
   window.location.href = "profile.html";
 }
-                                                                                //És persze lefuttatjuk a logint
-checkLogin(); 
 
 
+checkLogin();                                           //És persze lefuttatjuk a logint
 
 
+let slideIndex = 0;                 // Függvény a diák váltására a  hírdetéshez  
+const slides = document.querySelectorAll(".slideshow .slide");
 
-window.onload = function () {
-    let slides = 
-        document.getElementsByClassName('carousel-item');
+function showSlides() {
+  slides.forEach(slide => slide.classList.remove("active"));
+  if (slides.length === 0) return;
+  slides[slideIndex].classList.add("active");
+  slideIndex = (slideIndex + 1) % slides.length;
+}
 
-    function addActive(slide) {
-        slide.classList.add('active');
-    }
 
-    function removeActive(slide) {
-        slide.classList.remove('active');
-    }
-
-    addActive(slides[0]);
-    setInterval(function () {
-        for (let i = 0; i < slides.length; i++) {
-            if (i + 1 == slides.length) {
-                addActive(slides[0]);
-                setTimeout(removeActive, 500, slides[i]);
-                break;
-            }
-            if (slides[i].classList.contains('active')) {
-                setTimeout(removeActive, 500, slides[i]);
-                addActive(slides[i + 1]);
-                break;
-            }
-        }
-    }, 2000);
-};
+setInterval(showSlides, 4000); // Automatikus képváltás 4 másodpercenként
