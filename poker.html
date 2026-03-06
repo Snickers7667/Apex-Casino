@@ -1,12 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Póker</title>
+  <link rel="stylesheet" href="poker.css">
 </head>
 <body>
-    
+
+  <div class="wrap">
+    <h1>Póker</h1>
+    <p id="balance"></p>
+
+    <div class="row">
+      <input type="number" id="bet" placeholder="Tét (€)" min="1">
+      <button onclick="playPoker()">Osztás</button>
+      <button onclick="goHome()">Vissza</button>
+    </div>
+
+    <h2>Te lapjaid</h2>
+    <div id="playerCards" class="cards"></div>
+    <p id="playerHand" class="game-info"></p>
+
+    <h2>Gép lapjai</h2>
+    <div id="dealerCards" class="cards"></div>
+    <p id="dealerHand" class="game-info"></p>
+
+    <h2 id="result"></h2>
+  </div>
+
+  <script src="poker.js"></script>
 </body>
 </html>

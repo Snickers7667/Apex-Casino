@@ -11,7 +11,7 @@ function applyUpdates(user) {
                                       //                                     
 async function loginUser() {
   const email = document.getElementById("email").value.trim().toLowerCase();
-  const password = document.getElementById("password").value;
+       const password = document.getElementById("password").value;
   const msg = document.getElementById("message");
 
                                                   // JSON userek

@@ -16,7 +16,7 @@ async function registerUser() {
   const jsonUsers = await res.json();
 
                                                                                             // localStorage userek
-  const storedUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+                 const storedUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
                                                                                   // minden user egyben
   const allUsers = [...jsonUsers, ...storedUsers];
