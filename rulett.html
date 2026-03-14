@@ -1,12 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rulett</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="rulett.css" />
 </head>
 <body>
-    
+
+<div class="roulette-page">
+  <header class="roulette-header">
+    <h1>Rulett</h1>
+    <div class="roulette-userbar">
+      <span id="welcomeText">Üdv!</span>
+      <span>Egyenleg: <b id="balanceText">0</b> €</span>
+    </div>
+  </header>
+
+  <main class="roulette-layout">
+
+    <!-- RULETT KERÉK -->
+    <section class="wheel-section">
+      <h2>Rulett kerék</h2>
+
+    <div class="wheel-wrap">
+        <div class="wheel-pointer"></div>
+
+        <div id="ball" class="ball"></div>
+
+        <div id="wheel" class="wheel">
+            <div class="wheel-center"></div>
+        </div>
+    </div>
+      <div class="spin-panel">
+        <button id="spinBtn" onclick="spinRoulette()">Pörgetés</button>
+      </div>
+
+      <div class="result-box">
+        <p>Utolsó szám: <span id="numberResult">-</span></p>
+        <p>Szín: <span id="colorResult">-</span></p>
+        <p id="gameMessage">Válassz tétet és színt, aztán pörgess.</p>
+      </div>
+    </section>
+
+    <!-- FOGADÓ ASZTAL -->
+    <section class="bet-section">
+      <h2>Fogadó asztal</h2>
+
+      <div class="bet-table">
+        <div class="bet-card">
+          <label for="betAmount">Tét összege (€)</label>
+          <input type="number" id="betAmount" min="1" placeholder="Pl. 10">
+        </div>
+
+        <div class="bet-card">
+          <label>Szín választás</label>
+          <div class="color-choices">
+            <button class="color-btn red" onclick="selectColor('red')">Piros</button>
+            <button class="color-btn black" onclick="selectColor('black')">Fekete</button>
+            <button class="color-btn green" onclick="selectColor('green')">Zöld (0)</button>
+          </div>
+        </div>
+
+        <div class="bet-card selected-bet">
+          <p>Kiválasztott szín: <span id="selectedColorText">Nincs</span></p>
+          <p>Szorzó:</p>
+          <ul>
+            <li>Piros/Fekete = 2x</li>
+            <li>Zöld = 14x</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bet-help">
+        <p>
+          Tipp: válassz színt, adj meg tétet, majd nyomd meg a pörgetést.
+        </p>
+      </div>
+
+      <div class="bottom-actions">
+        <button onclick="goProfile()">Profil</button>
+        <button onclick="goHome()">Főoldal</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="rulett.js"></script>
 </body>
 </html>

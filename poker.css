@@ -1,3 +1,15 @@
+body{
+    margin:0;
+    background:#111315;
+    font-family:Arial, sans-serif;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    color: #f0f0f0;
+}
+
 .wrap {
     max-width: 900px;
     margin: 50px auto;
@@ -71,16 +83,47 @@
 .card {
     width: 90px;
     height: 130px;
-    background: linear-gradient(145deg, #ffffff, #e8e8e8);
-    color: #111;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
     border: 3px solid #c6a85b;
     border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 34px;
-    font-weight: bold;
+    position: relative;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    font-weight: bold;
+}
+
+.card.red {
+    color: #c62828;
+}
+
+.card.black {
+    color: #111;
+}
+
+.card .top {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-size: 22px;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.card .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+}
+
+.card .bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    font-size: 22px;
+    line-height: 1.1;
+    text-align: right;
+    transform: rotate(180deg);
 }
 
 .game-info {
@@ -104,7 +147,15 @@
     .card {
         width: 75px;
         height: 110px;
-        font-size: 28px;
+    }
+
+    .card .top,
+    .card .bottom {
+        font-size: 18px;
+    }
+
+    .card .center {
+        font-size: 32px;
     }
 
     #result {

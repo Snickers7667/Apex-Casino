@@ -30,6 +30,13 @@ function showBalance() {
 
 const cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 
+const suits = [
+  { symbol: "♠", color: "black" },
+  { symbol: "♥", color: "red" },
+  { symbol: "♦", color: "red" },
+  { symbol: "♣", color: "black" }
+];
+
 const values = {
   2: 2,
   3: 3,
@@ -47,7 +54,14 @@ const values = {
 };
 
 function getRandomCard() {
-  return cards[Math.floor(Math.random() * cards.length)];
+  let value = cards[Math.floor(Math.random() * cards.length)];
+  let suit = suits[Math.floor(Math.random() * suits.length)];
+
+  return {
+    value: value,
+    symbol: suit.symbol,
+    color: suit.color
+  };
 }
 
 function dealHand() {
@@ -59,12 +73,18 @@ function renderHand(hand, elementId) {
   area.innerHTML = "";
 
   for (let card of hand) {
-    area.innerHTML += `<div class="card">${card}</div>`;
+    area.innerHTML += `
+      <div class="card ${card.color}">
+        <div class="top">${card.value}<br>${card.symbol}</div>
+        <div class="center">${card.symbol}</div>
+        <div class="bottom">${card.value}<br>${card.symbol}</div>
+      </div>
+    `;
   }
 }
 
 function evaluateHand(hand) {
-  let nums = hand.map(card => values[card]);
+  let nums = hand.map(card => values[card.value]);
   nums.sort((a, b) => b - a);
 
   if (nums[0] === nums[1] && nums[1] === nums[2]) {

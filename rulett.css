@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111315;
+  color: #f5f5f5;
+  font-family: 'Merriweather', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+.roulette-page {
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.roulette-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #181b1f;
+  border: 1px solid #2a2d31;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+}
+
+.roulette-header h1 {
+  color: #c6a85b;
+  font-size: 1.5rem;
+}
+
+.roulette-userbar {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #ddd;
+}
+
+.roulette-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 25px;
+}
+
+.wheel-section,
+.bet-section {
+  background: #1a1e22;
+  border: 1px solid #2a2d31;
+  border-radius: 12px;
+  padding: 25px;
+}
+
+.wheel-section h2,
+.bet-section h2 {
+  color: #c6a85b;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  margin: 0 auto 25px;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 30px solid #c6a85b;
+  z-index: 10;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid #2a2d31;
+  position: relative;
+  background:
+    conic-gradient(
+      #14532d 0deg 9.73deg,
+      #8b0000 9.73deg 19.46deg,
+      #111111 19.46deg 29.19deg,
+      #8b0000 29.19deg 38.92deg,
+      #111111 38.92deg 48.65deg,
+      #8b0000 48.65deg 58.38deg,
+      #111111 58.38deg 68.11deg,
+      #8b0000 68.11deg 77.84deg,
+      #111111 77.84deg 87.57deg,
+      #8b0000 87.57deg 97.30deg,
+      #111111 97.30deg 107.03deg,
+      #8b0000 107.03deg 116.76deg,
+      #111111 116.76deg 126.49deg,
+      #8b0000 126.49deg 136.22deg,
+      #111111 136.22deg 145.95deg,
+      #8b0000 145.95deg 155.68deg,
+      #111111 155.68deg 165.41deg,
+      #8b0000 165.41deg 175.14deg,
+      #111111 175.14deg 184.87deg,
+      #8b0000 184.87deg 194.60deg,
+      #111111 194.60deg 204.33deg,
+      #8b0000 204.33deg 214.06deg,
+      #111111 214.06deg 223.79deg,
+      #8b0000 223.79deg 233.52deg,
+      #111111 233.52deg 243.25deg,
+      #8b0000 243.25deg 252.98deg,
+      #111111 252.98deg 262.71deg,
+      #8b0000 262.71deg 272.44deg,
+      #111111 272.44deg 282.17deg,
+      #8b0000 282.17deg 291.90deg,
+      #111111 291.90deg 301.63deg,
+      #8b0000 301.63deg 311.36deg,
+      #111111 311.36deg 321.09deg,
+      #8b0000 321.09deg 330.82deg,
+      #111111 330.82deg 340.55deg,
+      #8b0000 340.55deg 350.28deg,
+      #111111 350.28deg 360deg
+    );
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-center {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  background: #c6a85b;
+  border: 6px solid #2a2d31;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.7);
+  z-index: 20;
+  transform: translate(-50%, -50%) rotate(0deg) translateY(-160px);
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+
+
+.spin-panel {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.spin-panel button,
+.bottom-actions button,
+.color-btn {
+  background: #c6a85b;
+  color: #111315;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.spin-panel button:hover,
+.bottom-actions button:hover,
+.color-btn:hover {
+  background: #d9b96b;
+}
+
+.result-box {
+  background: #16191c;
+  border: 1px solid #2a2d31;
+  border-radius: 10px;
+  padding: 18px;
+  color: #ddd;
+  line-height: 1.8;
+}
+
+.bet-table {
+  display: grid;
+  gap: 18px;
+}
+
+.bet-card {
+  background: #16191c;
+  border: 1px solid #2a2d31;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.bet-card label {
+  display: block;
+  margin-bottom: 10px;
+  color: #c6a85b;
+  font-weight: 700;
+}
+
+.bet-card input {
+  width: 100%;
+  padding: 12px;
+  background: #22252a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #f5f5f5;
+  font-size: 1rem;
+}
+
+.color-choices {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-btn.red {
+  background: #a61d24;
+  color: white;
+}
+
+.color-btn.black {
+  background: #111111;
+  color: white;
+  border: 1px solid #555;
+}
+
+.color-btn.green {
+  background: #1f7a3d;
+  color: white;
+}
+
+.color-btn.active {
+  outline: 3px solid #c6a85b;
+  transform: scale(1.04);
+}
+
+.selected-bet ul {
+  margin: 10px 0 0 18px;
+  color: #bbb;
+}
+
+.bet-help {
+  margin-top: 18px;
+  color: #aaa;
+}
+
+.bottom-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .roulette-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wheel-wrap {
+    width: 300px;
+    height: 300px;
+  }
+
+  .roulette-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roulette-page {
+    padding: 15px;
+  }
+
+  .wheel-wrap {
+    width: 250px;
+    height: 250px;
+  }
+
+  .color-choices {
+    flex-direction: column;
+  }
+}
