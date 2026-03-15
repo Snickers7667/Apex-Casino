@@ -231,7 +231,7 @@ async function spinRoulette() {
     if (selectedColor === resultColor) {
                                                   //a szorzó zöldnél 14szeres többinél 2 (fekete, pirosnál)
       multiplier =
-        selectedColor === "green" ? 14 : 2;
+        selectedColor === "green" ? 36 : 2;
     }
                               //ha nyertél updateolja a balanceodat
     if (multiplier > 0) {
