@@ -28,15 +28,15 @@ function showBalance() {
   document.getElementById("balance").textContent = `Egyenleg: ${user.balance} €`;
 }
 
-const cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+const cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];       //kártya számok egy listába
 
-const suits = [
+const suits = [                                         //kártya színek, minták egy listába
   { symbol: "♠", color: "black" },
   { symbol: "♥", color: "red" },
   { symbol: "♦", color: "red" },
   { symbol: "♣", color: "black" }
 ];
-
+                                      //számok értékei
 const values = {
   2: 2,
   3: 3,
@@ -52,7 +52,7 @@ const values = {
   K: 13,
   A: 14
 };
-
+                                //random kártya generálása
 function getRandomCard() {
   let value = cards[Math.floor(Math.random() * cards.length)];
   let suit = suits[Math.floor(Math.random() * suits.length)];
@@ -63,15 +63,15 @@ function getRandomCard() {
     color: suit.color
   };
 }
-
+                            //kiosztja a kártyáidat
 function dealHand() {
   return [getRandomCard(), getRandomCard(), getRandomCard()];
 }
-
+                                          //kapja meg a kártya adatait
 function renderHand(hand, elementId) {
   const area = document.getElementById(elementId);
   area.innerHTML = "";
-
+                                                                //styleolja meg a kártyákat
   for (let card of hand) {
     area.innerHTML += `
       <div class="card ${card.color}">
@@ -84,9 +84,9 @@ function renderHand(hand, elementId) {
 }
 
 function evaluateHand(hand) {
-  let nums = hand.map(card => values[card.value]);
+  let nums = hand.map(card => values[card.value]);    //A kártyák értékét számmá alakítása aztán beteszi egy tömbbe és csökkenő sorrendbe rendezi a kártyák értékét
   nums.sort((a, b) => b - a);
-
+                                                      //ezek nézik meg hogy a lapok értékei mik lesznek
   if (nums[0] === nums[1] && nums[1] === nums[2]) {
     return {
       rank: 3,
@@ -119,7 +119,7 @@ function evaluateHand(hand) {
     high: nums[0]
   };
 }
-
+                                                //ezzel nézi meg hogy kinek nagyobb a lapjai
 function compareHands(player, dealer) {
   if (player.rank > dealer.rank) {
     return "player";
@@ -142,7 +142,7 @@ function compareHands(player, dealer) {
 
 function playPoker() {
   let user = getCurrentUser();
-
+                                  //ha nem vagy bejelentkezve jelentkezz be
   if (!user) {
     window.location.href = "login.html";
     return;
@@ -160,7 +160,7 @@ function playPoker() {
     resultText.textContent = "Nincs elég pénzed!";
     return;
   }
-
+                                  //kapják meg a kártyának az adatait
   let playerHand = dealHand();
   let dealerHand = dealHand();
 
@@ -169,12 +169,12 @@ function playPoker() {
 
   let playerResult = evaluateHand(playerHand);
   let dealerResult = evaluateHand(dealerHand);
-
+                                                                                                    //írja ki a kártyákat 
   document.getElementById("playerHand").textContent = `Kezed: ${playerResult.name}`;
   document.getElementById("dealerHand").textContent = `Gép keze: ${dealerResult.name}`;
-
+                                                                                          // a nyertest válassza ki
   let winner = compareHands(playerResult, dealerResult);
-
+                                                                //pénzt nyersz vagy veszítesz vagy döntetlennél visszakapsz
   if (winner === "player") {
     user.balance += bet;
     resultText.textContent = `Nyertél! +${bet} €`;
