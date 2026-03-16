@@ -1,0 +1,310 @@
+.casino-body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 25%),
+    linear-gradient(135deg, #0a0d12 0%, #111827 100%);
+  color: #f5f1e8;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(10, 12, 18, 0.92);
+}
+
+.brand {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+
+.balance {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  padding: 28px;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(14, 18, 25, 0.96), rgba(17, 23, 35, 0.96));
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #d4af37;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.dice-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 360px;
+}
+
+.dice-face {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #f8f5ef, #ddd3be);
+  border: 4px solid #d4af37;
+  box-shadow:
+    0 0 0 6px rgba(212, 175, 55, 0.08),
+    0 20px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dice-face.rolling {
+  animation: diceRoll 0.9s linear infinite;
+}
+
+.dice-face.win {
+  box-shadow:
+    0 0 0 6px rgba(34, 197, 94, 0.12),
+    0 0 24px rgba(34, 197, 94, 0.45),
+    0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.dice-face.lose {
+  box-shadow:
+    0 0 0 6px rgba(239, 68, 68, 0.12),
+    0 0 24px rgba(239, 68, 68, 0.45),
+    0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes diceRoll {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(90deg) scale(1.08);
+  }
+  40% {
+    transform: rotate(180deg) scale(0.96);
+  }
+  60% {
+    transform: rotate(270deg) scale(1.08);
+  }
+  80% {
+    transform: rotate(330deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.pip {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #111827;
+  display: none;
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+/* 3x3 rács pozíciók */
+.p1 { top: 24px; left: 24px; }
+.p2 { top: 24px; left: 50%; transform: translateX(-50%); }
+.p3 { top: 24px; right: 24px; }
+
+.p4 { top: 50%; left: 24px; transform: translateY(-50%); }
+.p5 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.p6 { top: 50%; right: 24px; transform: translateY(-50%); }
+
+.p7 { bottom: 24px; left: 24px; }
+.p8 { bottom: 24px; left: 50%; transform: translateX(-50%); }
+.p9 { bottom: 24px; right: 24px; }
+
+.dice-face.face-1 .p5 { display: block; }
+
+.dice-face.face-2 .p1,
+.dice-face.face-2 .p9 { display: block; }
+
+.dice-face.face-3 .p1,
+.dice-face.face-3 .p5,
+.dice-face.face-3 .p9 { display: block; }
+
+.dice-face.face-4 .p1,
+.dice-face.face-4 .p3,
+.dice-face.face-4 .p7,
+.dice-face.face-4 .p9 { display: block; }
+
+.dice-face.face-5 .p1,
+.dice-face.face-5 .p3,
+.dice-face.face-5 .p5,
+.dice-face.face-5 .p7,
+.dice-face.face-5 .p9 { display: block; }
+
+.dice-face.face-6 .p1,
+.dice-face.face-6 .p3,
+.dice-face.face-6 .p4,
+.dice-face.face-6 .p6,
+.dice-face.face-6 .p7,
+.dice-face.face-6 .p9 { display: block; 
+}
+.dice-face.face-4::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #111827;
+  right: 24px;
+  bottom: 24px;
+}
+
+.dice-face.face-5 .p1,
+.dice-face.face-5 .p3,
+.dice-face.face-5 .p5,
+.dice-face.face-5 .p7,
+.dice-face.face-5::after {
+  display: block;
+}
+.dice-face.face-5::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #111827;
+  right: 24px;
+  bottom: 24px;
+}
+
+.dice-face.face-6 .p1,
+.dice-face.face-6 .p3,
+.dice-face.face-6 .p4,
+.dice-face.face-6 .p6,
+.dice-face.face-6 .p7,
+.dice-face.face-6::after {
+  display: block;
+}
+.dice-face.face-6::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #111827;
+  right: 24px;
+  bottom: 24px;
+}
+
+.gold-btn {
+  background: linear-gradient(180deg, #d7b24a, #bf9832);
+  color: #111;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.2s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  margin-top: 20px;
+}
+
+.gold-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.gold-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.secondary {
+  background: linear-gradient(180deg, #c9a64a, #a8842f);
+}
+
+.form-box,
+.rules-box,
+.info-box,
+.result-box {
+  background: rgba(8, 12, 18, 0.65);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+}
+
+.form-box label {
+  display: block;
+  margin-bottom: 10px;
+  color: #d4af37;
+  font-weight: 700;
+}
+
+.form-box input,
+.form-box select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #1a2230;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.action-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.result-box {
+  min-height: 80px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.result-box.win-text {
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #9ff0b9;
+}
+
+.result-box.lose-text {
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #ffb0b0;
+}
+
+@media (max-width: 900px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dice-stage {
+    min-height: 260px;
+  }
+
+  .dice-face {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.info-box{
+    margin-top: 20px;
+}
+

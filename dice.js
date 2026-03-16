@@ -1,4 +1,4 @@
-function getCurrentUser() {                                                                 //Átlagos profil adatok lekérése az oldalra
+function getCurrentUser() {
   return JSON.parse(localStorage.getItem("currentUser"));
 }
 
@@ -9,7 +9,7 @@ function getUserUpdates() {
 function saveUserUpdates(updates) {
   localStorage.setItem("userUpdates", JSON.stringify(updates));
 }
-                                                                    //frissíti a pénzed
+
 function persistUser(user) {
   const updates = getUserUpdates();
   updates[user.email] = { balance: user.balance };
@@ -17,7 +17,7 @@ function persistUser(user) {
 
   localStorage.setItem("currentUser", JSON.stringify(user));
 }
-                                                            //  Pénz adatai bekérése külön 
+
 function showBalance() {
   const user = getCurrentUser();
 
@@ -26,45 +26,107 @@ function showBalance() {
     return;
   }
 
-  document.getElementById("balance")
-    .textContent = `Egyenleg: ${user.balance} €`;
+  document.getElementById("balance").textContent = `Egyenleg: ${user.balance} €`;
 }
-                                                                    //Tét feltétele, lekéri a tippedet, meg az adott pénz értéket amit feltettél
-function rollDice() {
-  let user = getCurrentUser();
 
+function setDiceFace(value) {
+  const dice = document.getElementById("dice");
+  dice.className = `dice-face face-${value}`;
+}
+
+function resetDiceEffects() {
+  const dice = document.getElementById("dice");
+  const resultBox = document.getElementById("result");
+
+  dice.classList.remove("win", "lose", "rolling");
+  resultBox.classList.remove("win-text", "lose-text");
+}
+
+function rollAnimation(finalValue, onComplete) {
+  const dice = document.getElementById("dice");
+  let steps = 0;
+  const maxSteps = 14;
+
+  dice.classList.add("rolling");
+
+  const interval = setInterval(() => {
+    const tempValue = Math.floor(Math.random() * 6) + 1;
+    setDiceFace(tempValue);
+
+    steps++;
+
+    if (steps >= maxSteps) {
+      clearInterval(interval);
+      dice.classList.remove("rolling");
+      setDiceFace(finalValue);
+
+      setTimeout(() => {
+        onComplete();
+      }, 180);
+    }
+  }, 100);
+}
+
+function rollDice() {
+  const user = getCurrentUser();
   const bet = parseFloat(document.getElementById("bet").value);
-  const guess = parseInt(document.getElementById("guess").value);
+  const guess = parseInt(document.getElementById("guess").value, 10);
+
   const resultText = document.getElementById("result");
-                                                                    //Ha nem érvényes számot adsz meg azaz 0 vagy az alatt akkor visszadobja, hogy rendes tétet rakj
+  const lastRoll = document.getElementById("lastRoll");
+  const statusText = document.getElementById("statusText");
+  const rollBtn = document.getElementById("rollBtn");
+  const dice = document.getElementById("dice");
+
+  resetDiceEffects();
+
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
   if (!bet || bet <= 0) {
     resultText.textContent = "Adj meg érvényes tétet!";
+    statusText.textContent = "Hibás tét.";
     return;
   }
-                                                                //Ha nincs annyi pénzed mint beírtál nem mükszik
+
   if (bet > user.balance) {
-    resultText.textContent = "Nincs elég pénzed!";
+    resultText.textContent = "Nincs elég pénzed ehhez a fogadáshoz!";
+    statusText.textContent = "Sikertelen fogadás.";
     return;
   }
 
-                                                            //  kocka dobás
-  const dice = Math.floor(Math.random() * 6) + 1;
-                                                        //Ha eltaláltad kapd meg a feltett téted 5szörösét
-  if (dice === guess) {
-    const win = bet * 5;                            
-    user.balance += win;
+  const finalDice = Math.floor(Math.random() * 6) + 1;
 
-    resultText.textContent =
-      ` Dobás: ${dice} | ELTALÁLTAD! Nyeremény: +${win}€`;
-  } else {                                                              //ha vesztettél elveszted amit feltettél
-    user.balance -= bet;
+  rollBtn.disabled = true;
+  resultText.textContent = "A kocka gurul...";
+  statusText.textContent = "Dobás folyamatban...";
 
-    resultText.textContent =
-      ` Dobás: ${dice} | Nem talált sajnos próbáld újra -${bet}€`;
-  }
+  rollAnimation(finalDice, () => {
+    lastRoll.textContent = finalDice;
 
-  persistUser(user);
-  showBalance();
+    if (finalDice === guess) {
+      const win = bet * 5;
+      user.balance += win;
+
+      dice.classList.add("win");
+      resultText.classList.add("win-text");
+      resultText.textContent = `Dobás: ${finalDice} | ELTALÁLTAD! Nyeremény: +${win}€`;
+      statusText.textContent = "Szép! Nyertél.";
+    } else {
+      user.balance -= bet;
+
+      dice.classList.add("lose");
+      resultText.classList.add("lose-text");
+      resultText.textContent = `Dobás: ${finalDice} | Nem talált. Vesztettél: -${bet}€`;
+      statusText.textContent = "Most nem jött be.";
+    }
+
+    persistUser(user);
+    showBalance();
+    rollBtn.disabled = false;
+  });
 }
 
 function goHome() {
@@ -72,3 +134,4 @@ function goHome() {
 }
 
 showBalance();
+setDiceFace(1);

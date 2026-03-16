@@ -9,6 +9,11 @@ const gameData = {                  // a játékokhoz egy adatbázis, hogy minde
     buttonText: "Póker Indítása",
     buttonAction: () => window.location.href = "poker.html"
   },
+    "Blackjack": {
+    message: "Próbáld ki a Blackjack asztalt és győzd le a dealert!",
+    buttonText: "Blackjack Indítása",
+    buttonAction: () => window.location.href = "blackjack.html"
+  },
   "Slot Machine": {
     message: "Forgasd a nyerőgépet és nyerj nagyot és nagyobbat!",
     buttonText: "Slot Indítása",

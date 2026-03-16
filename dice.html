@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <title>Dice Game</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kocka játék</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dice.css">
 </head>
-<body>
+<body class="casino-body">
 
-<h1> Dice Game</h1>
+  <header class="topbar">
+    <div class="brand">Kocka játék</div>
+    <div id="balance" class="balance">Egyenleg: 0 €</div>
+  </header>
 
-<p id="balance"></p>
+  <main class="game-layout">
+    <!-- BAL OLDAL -->
+    <section class="panel dice-panel">
+      <h2 class="panel-title">Dobókocka</h2>
 
-<label>Tippelt szám:</label>
-<select id="guess">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-</select>
+      <div id="dice" class="dice-face face-1">
+        <span class="pip p1"></span>
+        <span class="pip p2"></span>
+        <span class="pip p3"></span>
+        <span class="pip p4"></span>
+        <span class="pip p5"></span>
+        <span class="pip p6"></span>
+        <span class="pip p7"></span>
+        <span class="pip p8"></span>
+        <span class="pip p9"></span>
+      </div>
 
-<br><br>
+      <button id="rollBtn" class="gold-btn" onclick="rollDice()">Dobás</button>
 
-<input type="number" id="bet" placeholder="Tét (€)">
+      <div class="info-box">
+        <p><strong>Utolsó dobás:</strong> <span id="lastRoll">-</span></p>
+        <p><strong>Állapot:</strong> <span id="statusText">Válassz számot és tétet, aztán dobj.</span></p>
+      </div>
+    </section>
 
-<br><br>
+    <!-- JOBB OLDAL -->
+    <section class="panel bet-panel">
+      <h2 class="panel-title">Fogadó asztal</h2>
 
-<button onclick="rollDice()">Dobás</button>
+      <div class="form-box">
+        <label for="bet">Tét összege (€)</label>
+        <input type="number" id="bet" placeholder="Pl. 100" min="1" />
+      </div>
 
-<h2 id="result"></h2>
+      <div class="form-box">
+        <label for="guess">Tippelt szám</label>
+        <select id="guess">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
 
-<button onclick="goHome()">Vissza</button>
+      <div class="rules-box">
+        <p><strong>Kifizetés:</strong> 5x</p>
+        <p><strong>Esély:</strong> 1 / 6</p>
+        <p><strong>Játék menete:</strong> válassz számot, add meg a tétet, majd indítsd a dobást.</p>
+      </div>
 
-<script src="dice.js"></script>
+      <div class="action-row">
+        <button class="gold-btn secondary" onclick="goHome()">Főoldal</button>
+      </div>
+
+      <div id="result" class="result-box">
+        A dobás eredménye itt fog megjelenni.
+      </div>
+    </section>
+  </main>
+
+  <script src="dice.js"></script>
 </body>
 </html>
