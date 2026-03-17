@@ -2,8 +2,8 @@
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 25%),
-    linear-gradient(135deg, #0a0d12 0%, #111827 100%);
+    radial-gradient(circle at top, rgba(198, 168, 91, 0.08), transparent 25%),
+    linear-gradient(135deg, #16191c 0%, #1c1f23 100%);
   color: #f5f1e8;
   font-family: Georgia, "Times New Roman", serif;
 }
@@ -13,14 +13,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 28px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  background: rgba(10, 12, 18, 0.92);
+  border-bottom: 1px solid rgba(198, 168, 91, 0.15);
+  background: rgba(22, 25, 28, 0.92);
 }
 
 .brand {
   font-size: 2rem;
   font-weight: 700;
-  color: #d4af37;
+  color: #c6a85b;
   letter-spacing: 1px;
 }
 
@@ -37,8 +37,8 @@
 }
 
 .panel {
-  background: linear-gradient(180deg, rgba(14, 18, 25, 0.96), rgba(17, 23, 35, 0.96));
-  border: 1px solid rgba(212, 175, 55, 0.14);
+  background: linear-gradient(180deg, rgba(22, 25, 28, 0.96), rgba(31, 35, 39, 0.96));
+  border: 1px solid rgba(198, 168, 91, 0.14);
   border-radius: 18px;
   padding: 24px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
@@ -47,7 +47,7 @@
 .panel-title {
   margin-top: 0px;
   margin-bottom: 20px;
-  color: #d4af37;
+  color: #c6a85b;
   font-size: 2rem;
   letter-spacing: 0.5px;
 }
@@ -64,10 +64,10 @@
   width: 180px;
   height: 180px;
   border-radius: 28px;
-  background: linear-gradient(145deg, #f8f5ef, #ddd3be);
-  border: 4px solid #d4af37;
+  background: linear-gradient(145deg, #1f2327, #16191c);
+  border: 4px solid #c6a85b;
   box-shadow:
-    0 0 0 6px rgba(212, 175, 55, 0.08),
+    0 0 0 6px rgba(198, 168, 91, 0.08),
     0 20px 40px rgba(0, 0, 0, 0.45);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -91,37 +91,26 @@
 }
 
 @keyframes diceRoll {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  20% {
-    transform: rotate(90deg) scale(1.08);
-  }
-  40% {
-    transform: rotate(180deg) scale(0.96);
-  }
-  60% {
-    transform: rotate(270deg) scale(1.08);
-  }
-  80% {
-    transform: rotate(330deg) scale(1);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(90deg) scale(1.08); }
+  40% { transform: rotate(180deg) scale(0.96); }
+  60% { transform: rotate(270deg) scale(1.08); }
+  80% { transform: rotate(330deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
+/* PIPS */
 .pip {
   position: absolute;
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #111827;
+  background: #c6a85b;
   display: none;
-  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 6px rgba(198,168,91,0.6);
 }
 
-/* 3x3 rács pozíciók */
+/* positions */
 .p1 { top: 24px; left: 24px; }
 .p2 { top: 24px; left: 50%; transform: translateX(-50%); }
 .p3 { top: 24px; right: 24px; }
@@ -134,6 +123,7 @@
 .p8 { bottom: 24px; left: 50%; transform: translateX(-50%); }
 .p9 { bottom: 24px; right: 24px; }
 
+/* CLEAN FACE LOGIC */
 .dice-face.face-1 .p5 { display: block; }
 
 .dice-face.face-2 .p1,
@@ -159,58 +149,10 @@
 .dice-face.face-6 .p4,
 .dice-face.face-6 .p6,
 .dice-face.face-6 .p7,
-.dice-face.face-6 .p9 { display: block; 
-}
-.dice-face.face-4::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #111827;
-  right: 24px;
-  bottom: 24px;
-}
-
-.dice-face.face-5 .p1,
-.dice-face.face-5 .p3,
-.dice-face.face-5 .p5,
-.dice-face.face-5 .p7,
-.dice-face.face-5::after {
-  display: block;
-}
-.dice-face.face-5::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #111827;
-  right: 24px;
-  bottom: 24px;
-}
-
-.dice-face.face-6 .p1,
-.dice-face.face-6 .p3,
-.dice-face.face-6 .p4,
-.dice-face.face-6 .p6,
-.dice-face.face-6 .p7,
-.dice-face.face-6::after {
-  display: block;
-}
-.dice-face.face-6::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #111827;
-  right: 24px;
-  bottom: 24px;
-}
+.dice-face.face-6 .p9 { display: block; }
 
 .gold-btn {
-  background: linear-gradient(180deg, #d7b24a, #bf9832);
+  background: linear-gradient(180deg, #c6a85b, #a8842f);
   color: #111;
   border: none;
   border-radius: 12px;
@@ -234,15 +176,15 @@
 }
 
 .secondary {
-  background: linear-gradient(180deg, #c9a64a, #a8842f);
+  background: linear-gradient(180deg, #c6a85b, #1f2327);
 }
 
 .form-box,
 .rules-box,
 .info-box,
 .result-box {
-  background: rgba(8, 12, 18, 0.65);
-  border: 1px solid rgba(212, 175, 55, 0.12);
+  background: rgba(22, 25, 28, 0.65);
+  border: 1px solid rgba(198, 168, 91, 0.12);
   border-radius: 14px;
   padding: 16px 18px;
   margin-bottom: 18px;
@@ -251,7 +193,7 @@
 .form-box label {
   display: block;
   margin-bottom: 10px;
-  color: #d4af37;
+  color: #c6a85b;
   font-weight: 700;
 }
 
@@ -262,7 +204,7 @@
   padding: 14px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.12);
-  background: #1a2230;
+  background: #1c1f23;
   color: #fff;
   font-size: 1rem;
 }
@@ -304,7 +246,6 @@
   }
 }
 
-.info-box{
-    margin-top: 20px;
+.info-box {
+  margin-top: 20px;
 }
-
