@@ -40,22 +40,54 @@ function showProfile() {
   localStorage.setItem("currentUser", JSON.stringify(user));
 
   const area = document.getElementById("profileArea");
-  area.innerHTML = `
-  <h2 class="sajt">Üdv ${user.name}!</h2>
-  <p>Email: ${user.email}</p>
-  <p>Egyenleg: ${user.balance} €</p>
+  const initial = user.name ? user.name.charAt(0).toUpperCase() : "?";
 
-  <input type="number" id="amount" placeholder="Összeg feltöltése">
-  <button onclick="addBalance()">Feltöltés</button>
+area.innerHTML = `
+  <div class="profile-head">
+    <div class="avatar">${initial}</div>
+    <div class="profile-title">
+      <h2>Üdv, ${user.name}!</h2>
+      <p>Itt tudod kezelni a fiókodat és az egyenlegedet.</p>
+    </div>
+  </div>
 
-  <br><br>
+  <div class="info-grid">
+    <div class="info-box">
+      <span class="info-label">Felhasználónév</span>
+      <div class="info-value">${user.name}</div>
+    </div>
 
-  ${user.email === "admin@gmail.com"
-    ? `<button onclick="location.href='accounts.html'">Admin nézet</button>`
-    : ""}
+    <div class="info-box">
+      <span class="info-label">Email cím</span>
+      <div class="info-value">${user.email}</div>
+    </div>
 
-  <button onclick="goHome()">Vissza a főoldalra</button>
-  <button onclick="logout()">Kijelentkezés</button>
+    <div class="info-box balance-box">
+      <span class="info-label">Jelenlegi egyenleg</span>
+      <div class="info-value">${user.balance} €</div>
+    </div>
+
+    <div class="info-box">
+      <span class="info-label">Státusz</span>
+      <div class="info-value">${user.email === "admin@gmail.com" ? "Admin" : "Játékos"}</div>
+    </div>
+  </div>
+
+  <div class="topup-card">
+    <p class="topup-title">Egyenleg feltöltése</p>
+    <div class="input-row">
+      <input type="number" id="amount" placeholder="Adj meg egy összeget..." min="1" step="1">
+      <button onclick="addBalance()">Feltöltés</button>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    ${user.email === "admin@gmail.com"
+      ? `<button class="secondary admin-only" onclick="location.href='accounts.html'">Admin nézet</button>`
+      : ""}
+    <button class="secondary" onclick="goHome()">Vissza a főoldalra</button>
+    <button class="danger" onclick="logout()">Kijelentkezés</button>
+  </div>
 `;
 }
 

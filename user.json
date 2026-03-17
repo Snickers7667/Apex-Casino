@@ -1,20 +1,28 @@
-[
-  {
-    "name": "Teszt Béla",
-    "email": "teszt@gmail.com",
-    "password": "1234",
-    "balance": 100
-  },
-  {
-    "name": "Anna",
-    "email": "anna@gmail.com",
-    "password": "1111",
-    "balance": 250
-  },
-  {
-  "name": "Admin",
-  "email": "admin@gmail.com",
-  "password": "admin",
-  "balance": 0
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Teszt Béla",
+      "email": "teszt@gmail.com",
+      "password": "1234",
+      "balance": 100,
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "name": "Anna",
+      "email": "anna@gmail.com",
+      "password": "1111",
+      "balance": 250,
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "balance": 0,
+      "isAdmin": true
+    }
+  ]
 }
-]

@@ -12,7 +12,7 @@ async function registerUser() {
   }
 
                                                                                     // JSON userek
-  const res = await fetch("user.json");
+  const res = await fetch("http://localhost:3000/users");
   const jsonUsers = await res.json();
 
                                                                                             // localStorage userek

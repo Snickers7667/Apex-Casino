@@ -22,7 +22,7 @@ function applyUpdates(user) {
 }
                                             //Beolvassa a user.json fájl átalakítja Javascript adattá és visszaadja  a felhasználónak
 async function getJsonUsers() {
-  const res = await fetch("user.json");
+  const res = await fetch("http://localhost:3000/users");
   return await res.json();
 }
                                             //Ha ugyanaz az email többször szerepel, csak az utolsó marad.
@@ -51,7 +51,7 @@ async function loadAll() {
   const regUsers = getRegisteredUsers();
 
                                                                                         // Forrás jelölés
-  const jsonTagged = jsonUsers.map(u => ({ ...u, _source: "user.json" }));
+  const jsonTagged = jsonUsers.map(u => ({ ...u, _source: "http://localhost:3000/users" }));
   const regTagged = regUsers.map(u => ({ ...u, _source: "localStorage" }));
 
                                                                                 // összerak + duplikációk kiszedése email alapján
