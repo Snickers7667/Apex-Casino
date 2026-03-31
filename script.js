@@ -133,3 +133,29 @@ function showSlides() {
 
 
 setInterval(showSlides, 4000); // Automatikus képváltás 4 másodpercenként
+
+                                                                //ha elfogadja tünjön el a popup
+function acceptTerms() {
+  localStorage.setItem("termsAccepted", "true");
+  document.getElementById("termsPopup").style.display = "none";
+}
+
+function declineTerms() {
+  window.location.href = "https://www.google.com"; // Ha köcsög és nem fogadja el tünés
+}
+
+                              //Easter eggecske :D
+
+let keySequence = "";
+const secretCode = "JMAAC";
+
+document.addEventListener("keydown", (e) => {
+  keySequence += e.key.toUpperCase();
+
+                                              // csak az utolsó 5 karaktert nézzük
+  keySequence = keySequence.slice(-5);
+
+  if (keySequence === secretCode) {
+    window.location.href = "secret.html"; // ide visz el
+  }
+});
